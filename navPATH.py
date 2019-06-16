@@ -1,5 +1,7 @@
 import os, time, sys
 
+#####################################
+
 def printFiles(directory):
     if len(os.listdir(directory)) > 0:
         for arquivo in range(len(os.listdir(directory))):
@@ -7,17 +9,20 @@ def printFiles(directory):
             time.sleep(0.1)
     else:
         print('-EMPTY DIRECTORY-')
+
 def dirIsValid(directory):
     try:
         os.listdir(directory)
         return True
     except FileNotFoundError:
         return False
+
 def YorN(question):
     if input(question+' (Y/N): ').upper() == 'N':
         return False
     else:
         return True 
+
 def browser():
     currentDirectory = '/'
     pathHistory = ['/']
@@ -60,4 +65,5 @@ def browser():
                     continue 
 
     return currentDirectory
-#---------------------------------------------------
+    
+#####################################

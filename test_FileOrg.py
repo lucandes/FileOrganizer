@@ -1,54 +1,7 @@
-#-*- coding: utf-8 -*-
-import os
-import time
-
-def selfprint(group, formats):
-    print('\n'+group)
-    for i in formats:
-        print(i) if i[0] == '.' else print('.'+i)
-        time.sleep(0.1)
-
-#def makeDIR():
-
-
-#--------------------------------
-print('\nFILE ORGANIZATOR 1.0')
-#--------------------------------
-while True:
-    print('-'*40)
-    print('\nCurrent directory:', os.getcwd())
-    time.sleep(1)
-    if input('~Organize current directory? (Y/N): ').upper() == 'N': 
-        mydir = navpath()
-        if len(mydir) > 1:
-            mydir = mydir[1:]
-    else:
-        mydir = os.getcwd()
-
-    print('\nDirectory content:')
-    for i in range(len(os.listdir(mydir))):
-        print('-', os.listdir(mydir)[i])
-    
-    time.sleep(1)
-    if input('\n~Proceed to organization? (Y/N): ').upper() == 'N':
-        continue
-    else:
-        print()
-        break
-    #-------------------------------------------------------------------
-    # Start organization
-    #-------------------------------------------------------------------
-
 print('-'*40, '\nSELECT FORMATS', '\n'+'-'*40)
 print('Default formats:\n')
 
-fzip = ['zip', 'rar']
-fimg = ['jpg', 'jpeg', 'png', 'gif']
-fvid = ['mpeg', 'mp4', 'mkv']
-ftor = ['torrent']
-fdoc = ['doc', 'pdf', 'docx', 'lib', 'pdf', 'pptx']
-fiso = ['iso']
-formdict = {'1':fzip, '2':fimg, '3':fvid, '4':ftor, '5':fdoc, '6':fiso}
+
 
 while True:
 
@@ -103,4 +56,5 @@ while True:
             continue
     
 
-makeDIR() # criar pastas
+#makeDIR() # criar pastas
+a = 'jsaid'
