@@ -1,15 +1,10 @@
-import FileOrg, navPATH, time, os
+import time, os, configFO as cf, fileOrg as fo
 
-print('\nFILE ORGANIZATOR 1.0\n')
-time.sleep(1)
-
-print('Current directory:', os.getcwd())
-
-if navPATH.YorN('Organize current directory?'):
-    currentDirectory = os.getcwd()
-else:
-    currentDirectory = navPATH.browser()
-
-FileOrg.runFO()
-
-input('NOT IMPLEMENTED YET')
+while True:
+    cf.run()
+    if not fo.run2():
+        print('Restarting...')
+        time.sleep(1)
+        continue
+    print('NOT IMPLEMENTED YET')
+    break
