@@ -24,7 +24,7 @@ def checkDuplicate(format):
         return True
 
 def checkDir(directoryIndex):
-    if str(directoryIndex) in '123456':
+    if directoryIndex+1 in list(range(1, len(default.formindex)+1)):
         return True
     else:
         return False
@@ -36,12 +36,13 @@ def YorN(question):
             return True 
 
 def selfprint(group, formats):
-    print('='*30)
-    print(group)
-    formats = formats.split(' ')
-    for i in formats:
-        print(i) if i[0] == '.' else print('.'+i)
-        time.sleep(0.1)
+    if len(formats) != 0:
+        print('='*30)
+        print(group)
+        formats = formats.split(' ')
+        for i in formats:
+            print(i) if i[0] == '.' else print('.'+i)
+            time.sleep(0.1)
 
 def checkAndTest(format):
     format = removeDot(format)
@@ -57,8 +58,6 @@ def checkAndTest(format):
 def currentDir():
     print('Current directory:', os.getcwd())
     if navPATH.YorN('Organize current directory?'):
-        #print('DONWLOADS WINDOWS SELECIONADO')
-        #return '/media/randury/Reservado pelo Sistema/Users/Debslu/Downloads'
         return os.getcwd()
     else:
         return navPATH.browser()
@@ -76,12 +75,9 @@ def run():
     confSelected = False
 
     while not confSelected:
-        selfprint('1- Compressed Files:', default.formindex[0])
-        selfprint('2- Image Files:', default.formindex[1])
-        selfprint('3- Video Files:', default.formindex[2])
-        selfprint('4- Torrent Files:', default.formindex[3])
-        selfprint('5- Document Files:', default.formindex[4])
-        selfprint('6- CD/DVD Files:', default.formindex[5])
+        for item in range(len(default.formindex)):
+            selfprint(str(item+1)+'- '+default.formname[item], default.formindex[item])
+
         print('='*30)
 
         if not YorN('\nUse this configuration?'):
@@ -97,9 +93,7 @@ def run():
 
                 if checkDuplicate(formatToEdit):
                     default.addFormats(dirIndex, formatToEdit)
-                    if YorN('Edit another format?'):
-                        continue
-                    break
+                    continue
                 else:
                     print('Format error: the inputed format is already in a directory')
                     time.sleep(1)
@@ -114,9 +108,7 @@ def run():
 
                 if checkDuplicate(formatToEdit):
                     default.rmvFormats(dirIndex, formatToEdit)
-                    if YorN('Edit another format?'):
-                        continue
-                    break
+                    continue
                 else:
                     print('Format error: the inputed format is already in a directory')
                     time.sleep(1)
@@ -131,12 +123,14 @@ def run():
 class Config:
     def __init__(self):
         self.formats = {
-        'fzip':'zip rar', 
+        'fzip':'zip rar whl deb', 
         'fimg':'jpg jpeg png gif', 
         'fvid':'mpeg mp4 mkv', 
         'ftor':'torrent', 
-        'fdoc':'doc pdf docx lib pdf pptx', 
-        'fiso':'iso'}
+        'fdoc':'txt doc pdf docx lib pdf pptx odt', 
+        'fiso':'iso', 
+        'fexe':'exe', 
+        'fdev':'py ini msi'}
         
         self.formindex = [
         self.formats['fzip'], 
@@ -144,7 +138,9 @@ class Config:
         self.formats['fvid'], 
         self.formats['ftor'], 
         self.formats['fdoc'], 
-        self.formats['fiso']
+        self.formats['fiso'], 
+        self.formats['fexe'], 
+        self.formats['fdev']
         ]
 
         self.formname = [
@@ -153,7 +149,9 @@ class Config:
         'Video Files', 
         'Torrent Files', 
         'Document Files', 
-        'CD/DVD Files']
+        'DVD Images Files',
+        'Executable Files', 
+        'Programing Files']
      
     def addFormats(self, directoryNum, newformat):
         if YorN('\nEnter {} format to directory "{}"?: '.format(newformat, default.formname[directoryNum])):

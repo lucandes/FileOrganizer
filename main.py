@@ -1,10 +1,14 @@
-import time, os, configFO as cf, fileOrg as fo
+import time, os, configFO as cf, fileOrg as fo, sys
 
+assert ('linux' in sys.platform), 'This program runs on Linux only'
 while True:
     cf.run()
-    if not fo.run2():
+
+    fo.run2()
+    if not cf.YorN('\n'+str(fo.filesFound)+' files with matching formats founded. Proceed?'):
         print('Restarting...')
         time.sleep(1)
         continue
-    print('NOT IMPLEMENTED YET')
+    
+    fo.runFinal()
     break

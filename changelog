@@ -16,5 +16,4 @@ checar o formato:
 - cheque se o formato do arquivo está na lista dos formatos = list(cf.default.formats.keys())
 
 ----bugfix-----
-> é necessário uma lista de todos os formatos cadastrados para saber se o formato encontrado no arquivo está na lista dos que devem ser movidos,
- no estado atual, os formatos estão cadastrados em uma lista de listas.
+> na parte de configuração ocorre um erro quando um diretório não possui formatos
