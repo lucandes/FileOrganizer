@@ -64,7 +64,7 @@ def currentDir():
 
 def run():
     print('---------------------')
-    print('\nFILE ORGANIZATOR 1.0\n')
+    print('\nFILE ORGANIZER 1.0\n')
     time.sleep(1)
 
     global currentDirectory
