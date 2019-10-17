@@ -5,7 +5,7 @@ while True:
     cf.run()
 
     fo.run2()
-    if not cf.YorN('\n'+str(fo.filesFound)+' files with matching formats founded. Proceed?'):
+    if not cf.YorN('\n'+str(fo.filesFound)+' files with matching formats found. Proceed?'):
         print('Restarting...')
         time.sleep(1)
         continue
