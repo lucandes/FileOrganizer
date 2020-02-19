@@ -2,7 +2,8 @@ import conf
 
 def main():
     app = conf.App()
-    app.checkSudo()
+    if not app.checkSudo():
+        return
 
     app.start()
 

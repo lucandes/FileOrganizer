@@ -1,5 +1,5 @@
 import os
-#import nav
+import nav
 import exe
 from time import sleep
 
@@ -35,28 +35,26 @@ class App:
         'txt doc pdf docx lib pdf pptx odt', 
         'iso', 
         'exe', 
-        'py ini msi']
+        'py pyw ini msi c cpp java js']
 
         # turns formList's strings in lists
         for i in range(len(self.formList)):
             self.formList[i] = self.formList[i].split(' ')
 
         self.numOfDirs = len(self.dirNames)
-
-        #self.browser = nav.Browser()
+        
 
     # start of the program
     def start(self):
-        print("FILE ORGANIZER")
+        print("\nFILE ORGANIZER\nCreated by: Lucas Fernandes\n\n")
         sleep(1)
-        self.checkSudo()
 
-        self.targetDir = os.getcwd()
-        """if YorN("Use current directory?"):
+        self.browser = nav.Browser()
+        print(os.getcwd())
+        if YorN("Use current directory?"):
             self.targetDir = os.getcwd()
         else:
-            self.targetDir = self.browser.navigate()
-"""
+            self.targetDir = self.browser.start()
 
         # config selection
         while True:
@@ -72,9 +70,12 @@ class App:
 
     def checkSudo(self):
         uid = os.getuid()
-        if not uid:
+        if uid:
             print("Admin privileges are disabled. Errors may occur while moving files.")
             sleep(1)
+            if not YorN("Proceed?"):
+                return 0
+        return 1
 
     def printConfig(self):
         print()
@@ -85,7 +86,7 @@ class App:
 
             for form in self.formList[i]:
                 print("- %s" % form)
-                sleep(0.1)
+            sleep(1)
         print("." * 60)
 
     def editConfig(self):
@@ -110,8 +111,8 @@ class App:
             else:
                 num -= 1
 
-                print("\nSelect the operation")
-                op = int(input("1. Add format\n2. Remove format\n3. Remove directory\n>"))
+                print("\n1. Add format\n2. Remove format\n3. Remove directory")
+                op = int(input("Select the operation: "))
                 self.editDir(num, op)
                 return 1 # quit but restart
 
@@ -120,7 +121,10 @@ class App:
     def editDir(self, num, op):
         # add new format
         if op == 1:
-            newFormat = input("Enter the format (without '.'): ")
+            newFormat = input("\nEnter the new format: ")
+
+            while '.' in newFormat:
+                newFormat = newFormat.replace('.', '')
 
             if newFormat in self.formList[num]:
                 print("The format already is in the current directory.")
@@ -130,7 +134,10 @@ class App:
 
         # remove a format
         elif op == 2:
-            rmvFormat = input("Enter the format (without '.'): ")
+            rmvFormat = input("Enter the format: ")
+
+            while '.' in rmvFormat:
+                rmvFormat = rmvFormat.replace('.', '')
 
             if not rmvFormat in self.formList[num]:
                 print("This format is not in the current directory.")
