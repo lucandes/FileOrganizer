@@ -1,11 +1,6 @@
-import conf
+import app
 
 def main():
-    app = conf.App()
-    if not app.checkSudo():
-        return
-
-    app.start()
-
-
+	file_organizer = app.App()
+	file_organizer.run()
 main()
