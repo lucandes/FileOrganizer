@@ -1,5 +1,6 @@
-import time, os, configFO as cf, fileOrg as fo, sys
+import app
 
+<<<<<<< HEAD
 assert ('linux' in sys.platform), 'This program runs on Linux only'
 while True:
     cf.run()
@@ -12,3 +13,9 @@ while True:
     
     fo.runFinal()
     break
+=======
+def main():
+	file_organizer = app.App()
+	file_organizer.run()
+main()
+>>>>>>> 27398bc0533806e0b791822b5204dc1239ed0945

@@ -1,0 +1,57 @@
+This is the configuration file for FileOrganizer.
+Do not delete this file, the program won't work without it.
+**********************************************************
+Use "#" for new directories and "-" for extensions.
+Ex: # Dir_name
+Ex: - format
+**********************************************************
+
+# Compressed
+- zip
+- rar
+- whl
+- deb
+- 7z
+
+# Image
+- jpg
+- jpeg
+- png
+- gif
+
+# Video
+- mpeg
+- mp4
+- mkv
+
+# Torrent
+- torrent
+
+# Document
+- txt
+- doc
+- pdf
+- docx
+- lib
+- pdf
+- pptx
+- odt
+
+# ISO images
+- iso
+
+# Executable
+- exe
+
+# Programming
+- py
+- pyw
+- ini
+- msi
+- c
+- cpp
+- java
+- js
+- h
+- hpp
+- c++
