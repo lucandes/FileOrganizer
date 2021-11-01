@@ -1,4 +1,4 @@
-import app
+import conf
 
 <<<<<<< HEAD
 assert ('linux' in sys.platform), 'This program runs on Linux only'
@@ -15,7 +15,12 @@ while True:
     break
 =======
 def main():
-	file_organizer = app.App()
-	file_organizer.run()
+    app = conf.App()
+    if not app.checkSudo():
+        return
+
+    app.start()
+
+
 main()
 >>>>>>> 27398bc0533806e0b791822b5204dc1239ed0945
